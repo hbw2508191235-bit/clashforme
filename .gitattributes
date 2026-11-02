@@ -1,0 +1,14 @@
+# 内核与部署包必须与上游保持字节一致，禁止任何行尾转换。
+# 缺少这两行时，Windows 上的 core.autocrlf 会把内核写成 CRLF，
+# 导致 pages.zip 内的 _worker.js 与工作区文件对不上。
+_worker.js -text
+pages.zip binary
+
+# 其余文本文件统一按 LF 检出，避免跨平台产生无意义的差异。
+*.md text eol=lf
+*.py text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.txt text eol=lf
+*.json text eol=lf
+*.toml text eol=lf
